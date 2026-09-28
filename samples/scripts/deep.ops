@@ -1,0 +1,11 @@
+# 先用自有空闲，不够再沿祖先就近借；随后归还、超时收回、超量回收与借不到。
+tree deep
+timeout 5
+o1 t=0 APPLY d 40
+o2 t=2 APPLY c 20
+o3 t=4 RELEASE d 12
+o4 t=6 APPLY d 5
+o5 t=7 RELEASE d 15
+o6 t=8 APPLY b 10
+o7 t=9 RELEASE c 45
+o8 t=10 APPLY d 200

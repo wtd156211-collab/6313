@@ -1,0 +1,5 @@
+# 兄弟节点 x/y/z 争抢 root 的空闲额度；x 自己已经用满。
+node root - 60 30
+node x root 10 10
+node y root 10 0
+node z root 10 0

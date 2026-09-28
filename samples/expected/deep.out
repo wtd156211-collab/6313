@@ -1,0 +1,27 @@
+STEP t=0 id=o1 action=APPLY node=d amount=40 result=OK borrowed=30
+STATE t=0 root=20/100/0/0 a=10/40/0/5 b=0/0/0/0 c=5/30/0/25 d=40/10/30/0
+DEBT t=0 b1=d->c:25/25@0 b2=d->a:5/5@0
+STEP t=2 id=o2 action=APPLY node=c amount=20 result=OK borrowed=20
+STATE t=2 root=20/100/0/0 a=10/40/0/25 b=0/0/0/0 c=25/30/20/25 d=40/10/30/0
+DEBT t=2 b1=d->c:25/25@0 b2=d->a:5/5@0 b3=c->a:20/20@2
+STEP t=4 id=o3 action=RELEASE node=d amount=12 result=OK repaid=12
+STATE t=4 root=20/100/0/0 a=10/40/0/25 b=0/0/0/0 c=25/30/20/13 d=28/10/18/0
+DEBT t=4 b1=d->c:13/25@0 b2=d->a:5/5@0 b3=c->a:20/20@2
+EVENT t=6 action=RECLAIM id=b1 borrower=d lender=c amount=13 start=0
+EVENT t=6 action=RECLAIM id=b2 borrower=d lender=a amount=5 start=0
+STEP t=6 id=o4 action=APPLY node=d amount=5 result=OK borrowed=5
+STATE t=6 root=20/100/0/0 a=10/40/0/20 b=0/0/0/0 c=25/30/20/5 d=15/10/5/0
+DEBT t=6 b3=c->a:20/20@2 b4=d->c:5/5@6
+EVENT t=7 action=RECLAIM id=b3 borrower=c lender=a amount=20 start=2
+STEP t=7 id=o5 action=RELEASE node=d amount=15 result=OK repaid=5
+STATE t=7 root=20/100/0/0 a=10/40/0/0 b=0/0/0/0 c=5/30/0/0 d=0/10/0/0
+DEBT t=7 -
+STEP t=8 id=o6 action=APPLY node=b amount=10 result=OK borrowed=10
+STATE t=8 root=20/100/0/0 a=10/40/0/10 b=10/0/10/0 c=5/30/0/0 d=0/10/0/0
+DEBT t=8 b5=b->a:10/10@8
+STEP t=9 id=o7 action=RELEASE node=c amount=45 result=REJECT reason=UNDERFLOW used=5
+STATE t=9 root=20/100/0/0 a=10/40/0/10 b=10/0/10/0 c=5/30/0/0 d=0/10/0/0
+DEBT t=9 b5=b->a:10/10@8
+STEP t=10 id=o8 action=APPLY node=d amount=200 result=REJECT reason=INSUFFICIENT available=135
+STATE t=10 root=20/100/0/0 a=10/40/0/10 b=10/0/10/0 c=5/30/0/0 d=0/10/0/0
+DEBT t=10 b5=b->a:10/10@8

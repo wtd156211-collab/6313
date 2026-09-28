@@ -1,0 +1,6 @@
+# 五层嵌套：root -> a -> b -> c -> d；b 这一层额度为 0；root 与 a 自身也在用额度。
+node root - 100 20
+node a root 40 10
+node b a 0 0
+node c b 30 5
+node d c 10 0

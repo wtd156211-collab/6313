@@ -1,0 +1,6 @@
+# 连续两层额度为 0：m 与 p 都是 0，越级向上借；n、root 自身都在用额度。
+node root - 50 10
+node m root 0 0
+node n m 20 20
+node p n 0 0
+node q n 5 0

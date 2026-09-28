@@ -1,0 +1,11 @@
+# 兄弟争抢同一个父节点的空闲额度：先到先得，超时后自动收回再被重新争抢。
+tree siblings
+timeout 4
+p1 t=0 APPLY y 25
+p2 t=1 APPLY z 20
+p3 t=2 APPLY x 8
+p4 t=3 RELEASE y 25
+p5 t=4 APPLY x 8
+p6 t=5 APPLY z 3
+p7 t=6 APPLY y 20
+p8 t=7 APPLY x 12

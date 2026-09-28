@@ -1,0 +1,11 @@
+# 中间层额度为 0，叶子只能越级借；借来的额度到期被收回，空闲用尽后拒绝。
+tree zero
+timeout 3
+z1 t=0 APPLY p 12
+z2 t=1 APPLY q 12
+z3 t=2 RELEASE q 12
+z4 t=3 APPLY n 10
+z5 t=5 RELEASE q 1
+z6 t=6 APPLY m 25
+z7 t=7 APPLY n 15
+z8 t=8 APPLY p 1
